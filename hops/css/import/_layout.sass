@@ -1,0 +1,392 @@
+// Variables
+
+$hero-height: 85vh
+$header-height: 74px
+$h1: #777
+
+// White
+$w: #f6f6f6
+// Red
+$r: #cd4949
+// Blond
+$y: #edc356
+// Dark
+$b: #111
+// Grey
+$g: #2f2d24
+
+body
+  font-family: 'Pathway Gothic One', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif
+  background: $w
+
+.container
+  overflow: hidden
+  max-width: 1200px
+  margin: 0 auto
+
+// Navbar
+
+.aside-menu
+  position: fixed
+  z-index: 1
+  top: 0
+  left: 0
+  bottom: 0
+  width: 100vw
+  background-color: $b
+  transform: translate(200vw, 0)
+  transition: all 0.3s ease-in-out
+
+  ul
+    list-style-type: none
+    padding: 0
+    text-align: center
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+    a
+      color: $y
+      font-size: 50px
+      text-decoration: none
+      transition: all 0.3s
+
+      &:hover
+        color: $w
+
+.show-mobile
+  transform: translate(0, 0)
+
+#hops
+  path
+    fill: $w
+
+.shadow
+  -webkit-filter: drop-shadow(3px 3px 2px rgba(0,0,0,0.8))
+  filter: drop-shadow(3px 3px 2px rgba(0,0,0,0.8))
+
+.test
+  max-width: 1400px
+  margin: 0 auto
+
+#menu
+  position: fixed
+  z-index: 2
+  top: 0
+  left: 0
+  right: 0
+  background-color: $b
+  height: 54px
+  transition: all 0.2s
+
+.nav-large
+  display: none
+
+.logo
+  padding: 10px 0 0 14px
+  width: 90px
+  height: 63px
+  float: left
+
+.nav
+  float: right
+
+.nav-menu
+  height: 90px
+  padding-top: 4px
+
+  .burger
+    position: relative
+    width: 25px
+    padding: 14px 22px
+    float: right
+    cursor: pointer
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+
+  .burger-icon
+    @include burger(25px, 3px, 5px, $w)
+
+#menu
+  .is-active
+    .burger-icon
+      @include burger-to-cross(3px, 5px)
+
+#hero
+  width: 100%
+  height: 460px
+  margin-top: 50px
+  background:
+    color: #ddd
+    position: center top
+    repeat: no-repeat
+    size: cover
+
+// Fonts
+
+p
+  font:
+    family: 'Merriweather', serif
+
+h1
+  margin-bottom: 50px
+  font-size: 26px
+  color: #555
+
+  span
+    padding: 4px 0
+    border-bottom: 2px solid $y
+
+// About
+
+#about
+  padding: 120px 0
+  background-color: #fbfbfb
+
+  .img
+    float: left
+    width: 100%
+
+  .b
+    width: 100%
+    height: auto
+    opacity: 0
+    transition: all 0.8s ease-in-out
+
+  .show
+    opacity: 1
+
+// Beer Section
+
+@mixin beer-type($color)
+  .info
+    p
+      color: $color
+
+  h3
+    color: $color
+    border-top: 1px solid $color
+    border-bottom: 1px solid $color
+
+#beer
+  padding: 100px 0
+  text-align: center
+
+  h2, h3
+    text-align: center
+    margin: 0
+
+  h2
+    font:
+      size: 54px
+    color: #444
+
+  h3
+    font:
+      size: 16px
+    letter-spacing: 6px
+    padding: 2px 0 2px 6px
+    text-transform: uppercase
+    margin: 2px 0 8px 0
+    transform: translate(30px, 0)
+    transition: all 0.5s ease-in-out
+
+  p
+    font:
+      size: 14px
+    text-align: center
+    padding: 0 12px
+    line-height: 20px
+    overflow: hidden
+    color: $b
+
+  .red
+    @include beer-type($r)
+
+  .blonde
+    @include beer-type($y)
+
+  .dark
+    @include beer-type($b)
+
+  .beer-container
+    display: inline-block
+    width: 270px
+    margin: 0 1% 30px 1%
+    opacity: 0
+    transform: translate(20px, 0)
+    transition: all 0.3s ease-in-out
+    padding: 30px 20px
+
+    p
+      text-align: justify
+      height: 140px
+
+    .info
+      margin-top: 20px
+      transform: translate(30px, 0)
+      transition: all 0.5s ease-in-out
+
+      .info-inline
+        display: inline-block
+
+      p
+        font-size: 18px
+        height: auto
+        margin: 0
+
+        span
+          font-size: 12px
+          color: $b
+
+  .show
+    opacity: 1
+    transform: translate(0, 0)
+
+    h3, .info
+      transform: translate(0, 0)
+
+@media (min-width: 1200px)
+
+  #beer
+    .beer-container
+      margin: 2%
+
+//
+
+#yellow
+  height: 600px
+  background:
+    image: url('../img/yellow.jpg')
+    position: center center
+    size: cover
+  padding-top: 60px
+  position: relative
+
+#instafeed
+  margin: 0 auto
+  padding: 100px 0
+  text-align: center
+  max-width: 1600px
+
+  img
+    margin: 2% 0
+    width: 44%
+    transition: all 0.2s ease-in-out
+
+@media (min-width: 40.0625em)
+
+  #instafeed
+    img
+      margin: 1%
+      width: 44%
+
+@media (min-width: 64.0625em)
+
+  #instafeed
+    img
+      width: 26%
+
+#contact
+  background: $w
+  height: 600px
+
+#end
+  background: #222
+  height: 60px
+
+// Media
+// min-width: 40.0625em
+// min-width: 64.0625em
+
+@media (min-width: 40.0625em)
+
+  #about
+    padding: 400px 0 120px 0
+
+    .img
+      width: 50%
+
+    .b
+      padding: 0.7em 0
+
+  #hero
+    height: 500px
+
+  #beer
+    .column
+      &:nth-child(odd)
+        .beer-container
+          float: right
+      &:nth-child(even)
+        .beer-container
+          float: left
+
+
+@media (min-width: 64.0625em)
+
+  #menu
+    height: 66px
+
+    .logo
+      padding: 12px 0 0 30px
+      width: 110px
+      height: 77px
+      float: left
+
+  .nav-menu
+    display: none
+
+  .nav-large
+    display: block
+    color: $w
+    margin-top: 22px
+    text-align: right
+
+    ul
+      list-style-type: none
+      margin: 0
+
+      li
+        display: inline-block
+        font:
+          size: 20px
+        text-transform: uppercase
+        margin: 0 20px
+
+      a
+        color: $w
+        text-decoration: none
+        position: relative
+        transition: all 0.3s
+
+      .hover-line
+        &:hover
+          color: $y
+
+      .active
+          &:after
+            content: ''
+            position: absolute
+            top: 0
+            right: 0
+            bottom: -4px
+            left: 0
+            border-bottom: 2px solid $y
+
+      i
+        padding: 6px 6px
+
+        &:hover
+          color: $w
+          background-color: #3b5998
+
+
+  #hero
+    height: 800px
+
+  #beer
+    .column
+      &:nth-child(odd), &:nth-child(even)
+        .beer-container
+          float: none
