@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -393,92 +392,6 @@ th {
   padding: 0;
 }
 
-@font-face {
-  font-family: 'icons';
-  src: url("../font/icons.eot?29467853");
-  src: url("../font/icons.eot?29467853#iefix") format("embedded-opentype"), url("../font/icons.woff?29467853") format("woff"), url("../font/icons.ttf?29467853") format("truetype"), url("../font/icons.svg?29467853#icons") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'icons';
-    src: url('../font/icons.svg?29467853#icons') format('svg');
-  }
-}
-*/
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "icons";
-  font-style: normal;
-  font-weight: normal;
-  speak: none;
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-  /* you can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-  /* Font smoothing. That was taken from TWBS */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
-}
-
-.icon-facebook:before {
-  content: '\e800';
-}
-
-/* '' */
-.icon-x:before {
-  content: '\e801';
-}
-
-/* '' */
-.icon-down:before {
-  content: '\e802';
-}
-
-/* '' */
-.icon-left:before {
-  content: '\e803';
-}
-
-/* '' */
-.icon-right:before {
-  content: '\e804';
-}
-
-/* '' */
-.icon-up:before {
-  content: '\e805';
-}
-
-/* '' */
-.icon-hopslogo:before {
-  content: '\e806';
-}
-
-/* '' */
-.icon-menu:before {
-  content: '\e807';
-}
-
-/* '' */
 body {
   font-family: 'Pathway Gothic One', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
   background: #f6f6f6;
@@ -486,8 +399,23 @@ body {
 
 .container {
   overflow: hidden;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+}
+
+p {
+  font-family: 'Merriweather', serif;
+}
+
+h1 {
+  margin-bottom: 50px;
+  font-size: 26px;
+  color: #444;
+}
+
+h1 span {
+  padding: 4px 0;
+  border-bottom: 2px solid #edc356;
 }
 
 .aside-menu {
@@ -544,21 +472,14 @@ body {
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.8));
 }
 
-.test {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-#menu {
+.desktop {
   position: fixed;
   z-index: 2;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #111;
   height: 54px;
-  -webkit-transition: all 0.2s;
-          transition: all 0.2s;
+  background: #111;
 }
 
 .nav-large {
@@ -640,251 +561,18 @@ body {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-#hero {
-  width: 100%;
-  height: 460px;
-  margin-top: 50px;
-  background-color: #ddd;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-p {
-  font-family: 'Merriweather', serif;
-}
-
-h1 {
-  margin-bottom: 50px;
-  font-size: 26px;
-  color: #555;
-}
-
-h1 span {
-  padding: 4px 0;
-  border-bottom: 2px solid #edc356;
-}
-
-#about {
-  padding: 120px 0;
-  background-color: #fbfbfb;
-}
-
-#about .img {
-  float: left;
-  width: 100%;
-}
-
-#about .b {
-  width: 100%;
-  height: auto;
-  opacity: 0;
-  -webkit-transition: all 0.8s ease-in-out;
-          transition: all 0.8s ease-in-out;
-}
-
-#about .show {
-  opacity: 1;
-}
-
-#beer {
-  padding: 100px 0;
-  text-align: center;
-}
-
-#beer h2, #beer h3 {
-  text-align: center;
-  margin: 0;
-}
-
-#beer h2 {
-  font-size: 54px;
-  color: #444;
-}
-
-#beer h3 {
-  font-size: 16px;
-  letter-spacing: 6px;
-  padding: 2px 0 2px 6px;
-  text-transform: uppercase;
-  margin: 2px 0 8px 0;
-  -webkit-transform: translate(30px, 0);
-      -ms-transform: translate(30px, 0);
-          transform: translate(30px, 0);
-  -webkit-transition: all 0.5s ease-in-out;
-          transition: all 0.5s ease-in-out;
-}
-
-#beer p {
-  font-size: 14px;
-  text-align: center;
-  padding: 0 12px;
-  line-height: 20px;
-  overflow: hidden;
-  color: #111;
-}
-
-#beer .red .info p {
-  color: #cd4949;
-}
-
-#beer .red h3 {
-  color: #cd4949;
-  border-top: 1px solid #cd4949;
-  border-bottom: 1px solid #cd4949;
-}
-
-#beer .blonde .info p {
-  color: #edc356;
-}
-
-#beer .blonde h3 {
-  color: #edc356;
-  border-top: 1px solid #edc356;
-  border-bottom: 1px solid #edc356;
-}
-
-#beer .dark .info p {
-  color: #111;
-}
-
-#beer .dark h3 {
-  color: #111;
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #111;
-}
-
-#beer .beer-container {
-  display: inline-block;
-  width: 270px;
-  margin: 0 1% 30px 1%;
-  opacity: 0;
-  -webkit-transform: translate(20px, 0);
-      -ms-transform: translate(20px, 0);
-          transform: translate(20px, 0);
-  -webkit-transition: all 0.3s ease-in-out;
-          transition: all 0.3s ease-in-out;
-  padding: 30px 20px;
-}
-
-#beer .beer-container p {
-  text-align: justify;
-  height: 140px;
-}
-
-#beer .beer-container .info {
-  margin-top: 20px;
-  -webkit-transform: translate(30px, 0);
-      -ms-transform: translate(30px, 0);
-          transform: translate(30px, 0);
-  -webkit-transition: all 0.5s ease-in-out;
-          transition: all 0.5s ease-in-out;
-}
-
-#beer .beer-container .info .info-inline {
-  display: inline-block;
-}
-
-#beer .beer-container .info p {
-  font-size: 18px;
-  height: auto;
-  margin: 0;
-}
-
-#beer .beer-container .info p span {
-  font-size: 12px;
-  color: #111;
-}
-
-#beer .show {
-  opacity: 1;
-  -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
-          transform: translate(0, 0);
-}
-
-#beer .show h3, #beer .show .info {
-  -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
-          transform: translate(0, 0);
-}
-
-@media (min-width: 1200px) {
-  #beer .beer-container {
-    margin: 2%;
-  }
-}
-
-#yellow {
-  height: 600px;
-  background-image: url("../img/yellow.jpg");
-  background-position: center center;
-  background-size: cover;
-  padding-top: 60px;
-  position: relative;
-}
-
-#instafeed {
-  margin: 0 auto;
-  padding: 100px 0;
-  text-align: center;
-  max-width: 1600px;
-}
-
-#instafeed img {
-  margin: 2% 0;
-  width: 44%;
-  -webkit-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
-}
-
-@media (min-width: 40.0625em) {
-  #instafeed img {
-    margin: 1%;
-    width: 44%;
-  }
-}
-
 @media (min-width: 64.0625em) {
-  #instafeed img {
-    width: 26%;
-  }
-}
-
-#contact {
-  background: #f6f6f6;
-  height: 600px;
-}
-
-#end {
-  background: #222;
-  height: 60px;
-}
-
-@media (min-width: 40.0625em) {
-  #about {
-    padding: 400px 0 120px 0;
-  }
-  #about .img {
-    width: 50%;
-  }
-  #about .b {
-    padding: 0.7em 0;
-  }
-  #hero {
-    height: 500px;
-  }
-  #beer .column:nth-child(odd) .beer-container {
-    float: right;
-  }
-  #beer .column:nth-child(even) .beer-container {
-    float: left;
-  }
-}
-
-@media (min-width: 64.0625em) {
-  #menu {
+  .desktop {
+    position: absolute;
+    top: 30px;
     height: 66px;
+    background: none;
+  }
+  .desktop-show {
+    position: fixed;
+    top: 0;
+    height: 66px;
+    background: rgba(0, 0, 0, 0.7);
   }
   #menu .logo {
     padding: 12px 0 0 30px;
@@ -930,17 +618,250 @@ h1 span {
     left: 0;
     border-bottom: 2px solid #edc356;
   }
-  .nav-large ul i {
-    padding: 6px 6px;
+}
+
+img {
+  vertical-align: middle;
+}
+
+#hero {
+  width: 100%;
+  height: 100vh;
+  background-color: #111;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 1px;
+  text-align: center;
+  color: #f6f6f6;
+  border-bottom: 5px solid #edc356;
+}
+
+#hero h1 {
+  color: #f6f6f6;
+  padding: 50vh 0 0 0;
+}
+
+#intro {
+  background: #fafafa;
+  padding: 150px 0;
+  text-align: center;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+#intro .intro-photo img {
+  width: 92%;
+}
+
+@media (min-width: 40.0625em) {
+  #intro .intro-photo img {
+    width: 80%;
   }
-  .nav-large ul i:hover {
-    color: #f6f6f6;
-    background-color: #3b5998;
+}
+
+@media (min-width: 64.0625em) {
+  #intro .intro-photo {
+    float: left;
+    width: 50%;
   }
-  #hero {
-    height: 800px;
+  #intro .intro-text {
+    float: left;
+    width: 50%;
+  }
+}
+
+#beer {
+  padding: 60px 0;
+  text-align: center;
+}
+
+#beer h1, #beer h2 {
+  color: #111;
+}
+
+#beer h2, #beer h3 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+#beer h2 {
+  font-size: 54px;
+  margin-bottom: 6px;
+}
+
+#beer h3 {
+  font-size: 16px;
+  letter-spacing: 6px;
+  padding: 2px 0 2px 6px;
+  margin: 2px 0 8px 0;
+  -webkit-transform: translate(30px, 0);
+      -ms-transform: translate(30px, 0);
+          transform: translate(30px, 0);
+  -webkit-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;
+}
+
+#beer p {
+  font-size: 14px;
+  text-align: center;
+  padding: 0 12px;
+  line-height: 20px;
+  overflow: hidden;
+  color: #f6f6f6;
+}
+
+#beer .red .info p {
+  color: #cd4949;
+}
+
+#beer .red h3 {
+  color: #cd4949;
+  border-top: 1px solid #cd4949;
+  border-bottom: 1px solid #cd4949;
+}
+
+#beer .blonde .info p {
+  color: #edc356;
+}
+
+#beer .blonde h3 {
+  color: #edc356;
+  border-top: 1px solid #edc356;
+  border-bottom: 1px solid #edc356;
+}
+
+#beer .dark .info p {
+  color: #878373;
+}
+
+#beer .dark h3 {
+  color: #878373;
+  border-top: 1px solid #878373;
+  border-bottom: 1px solid #878373;
+}
+
+#beer .beer-container {
+  display: inline-block;
+  width: 270px;
+  margin: 3% 1%;
+  opacity: 0;
+  -webkit-transform: translate(20px, 0);
+      -ms-transform: translate(20px, 0);
+          transform: translate(20px, 0);
+  -webkit-transition: all 0.3s ease-in-out;
+          transition: all 0.3s ease-in-out;
+  padding: 2%;
+}
+
+#beer .beer-container p {
+  text-align: justify;
+  height: 140px;
+}
+
+#beer .beer-container .info {
+  margin-top: 20px;
+  -webkit-transform: translate(80px, 0);
+      -ms-transform: translate(80px, 0);
+          transform: translate(80px, 0);
+  -webkit-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out;
+}
+
+#beer .beer-container .info .info-inline {
+  display: inline-block;
+}
+
+#beer .beer-container .info p {
+  font-size: 18px;
+  height: auto;
+  margin: 0;
+}
+
+#beer .beer-container .info p span {
+  font-size: 12px;
+}
+
+#beer .show {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+#beer .show h3, #beer .show .info {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+@media (min-width: 40.0625em) {
+  #beer .column:nth-child(odd) .beer-container {
+    float: right;
+  }
+  #beer .column:nth-child(even) .beer-container {
+    float: left;
+  }
+}
+
+@media (min-width: 64.0625em) {
+  #beer {
+    padding: 120px 0;
+  }
+  #beer .beer-container {
+    margin: 1%;
   }
   #beer .column:nth-child(odd) .beer-container, #beer .column:nth-child(even) .beer-container {
     float: none;
   }
+}
+
+#yellow {
+  height: 600px;
+  background-image: url("../img/yellow.jpg");
+  background-position: center center;
+  background-size: cover;
+  padding-top: 60px;
+  position: relative;
+}
+
+#instafeed {
+  text-align: center;
+  background: #f6f6f6;
+}
+
+#instafeed h1 {
+  color: #111;
+}
+
+#instafeed img {
+  width: 50%;
+}
+
+@media (min-width: 64.0625em) {
+  #instafeed img {
+    width: 25%;
+  }
+}
+
+#about {
+  padding: 150px 0;
+  background: #f6f6f6;
+  text-align: center;
+}
+
+#about svg {
+  margin: 0 20px;
+}
+
+#about svg:hover path {
+  fill: #edc356;
+}
+
+#about svg path {
+  fill: #999;
+}
+
+#end {
+  background: #edc356;
+  height: 15px;
 }

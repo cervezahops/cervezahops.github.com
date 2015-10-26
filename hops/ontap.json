@@ -1,9 +1,0 @@
-ontap = [
-  {
-    "marca" : "Hops",
-    "estilo" : "Pale Ale",
-    "info" : "La BAPA (Buenos Aires Pale Ale) es una cerveza con buen balance y mucho cuerpo.",
-    "abv" : 5.6,
-    "ibu": 39
-  }
-]

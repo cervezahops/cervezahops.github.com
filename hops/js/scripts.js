@@ -353,8 +353,8 @@ var feed = new Instafeed({
         clientId: 'a09f68c9ae8c4c5bba18c283b8df669f',
         //sortBy: 'most-recent',
         get: 'tagged',
-        tagName: 'hops',
-        limit: 6,
+        tagName: 'craftbeer',
+        limit: 4,
         resolution: 'standard_resolution',
         template: '<a href="{{link}}"><img src="{{image}}"/></a>'
     });
@@ -421,7 +421,7 @@ var check = true,
     check2 = true,
     checkAbout = true,
     navMenu = document.getElementById('menu'),
-    navHeight = 75;
+    navHeight = 66;
 
   function idTop(id) {
     var navID = document.getElementById(id),
@@ -466,7 +466,15 @@ window.addEventListener('scroll', function(){
       } else {
         if (aDesktop[n].className !== "hover-line") {
           aDesktop[n].className = "hover-line";
-        } //test
+        }
+      }
+
+      if (wScroll > 30 && check2) {
+        classA('desktop')[0].className += " desktop-show";
+        check2 = false;
+      } else if (wScroll < 30) {
+        classA('desktop')[0].className = "desktop";
+        check2 = true;
       }
     }
   }
@@ -480,11 +488,16 @@ window.addEventListener('scroll', function(){
     check = false;
   }
 
-  /**if (wScroll > idTop('instafeed') - (navHeight + 15) && check2) {
-    for (var i = 0; i < classA('instagram').length; i++) {
-      doTime(i, 'instagram');
-    }
-    check2 = false;
-  }**/
-
 });
+
+// JSON Beers
+// Uses a var form ontap.js to loop and create the html
+
+(function() {
+
+  for (v = 0; v < ontap.length; v++) {
+    document.getElementById('beer').innerHTML += '<div class="beer-container ' + ontap[v].color + '"><h2>' + ontap[v].marca +
+    '</h2><h3>' + ontap[v].estilo + '</h3><div class="info"><div class="info-inline"><p><span>ABV:</span> ' + ontap[v].abv +
+    '<span>%</span></p></div><div class="info-inline"><p><span>IBU:</span> ' + ontap[v].ibu + '</p></div></div></div>';
+  }
+})()

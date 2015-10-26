@@ -7,21 +7,21 @@
   <meta name="theme-color" content="#111">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Pathway+Gothic+One|Merriweather">
   <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <script type="text/javascript" src="ontap.js"></script>
 </head>
 <body>
 
   <aside class="aside-menu">
     <ul>
       <li><a href="#hero">HOME</a></li>
-      <li><a href="#about">INFO</a></li>
+      <li><a href="#intro">INFO</a></li>
       <li><a href="#beer">CERVEZAS</a></li>
       <li><a href="#instafeed">SOCIAL</a></li>
-      <li><a href="#contact">CONTACTO</a></li>
     </ul>
   </aside>
 
-  <header id="menu" class="nav-all">
-  <div class="test">
+  <header id="menu" class="desktop">
+  <div class="container">
     <div class="logo">
       <?xml version="1.0" encoding="utf-8"?>
       <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -183,11 +183,9 @@
       <nav class="nav-large">
         <ul>
           <li><a href="#hero" class="hover-line active">Home</a></li>
-          <li><a href="#about" class="hover-line">Info</a></li>
+          <li><a href="#intro" class="hover-line">Info</a></li>
           <li><a href="#beer" class="hover-line">Cervezas</a></li>
           <li><a href="#instafeed" class="hover-line">Social</a></li>
-          <li><a href="#contact" class="hover-line">Contacto</a></li>
-          <li><a href="https://www.facebook.com/hopscerveza"><i class="icon-facebook"></i></a></li>
         </ul>
       </nav>
     </div>
@@ -195,16 +193,25 @@
   </header>
 
   <div id="hero" data-img="hero">
+    <div class="overlay"></div>
   </div>
 
-  <div id="about">
+  <div id="intro">
+  <div class="container">
+    <div class="intro-photo">
+      <img src="img/hops_revolution.jpg">
+    </div>
+    <div class="intro-text">
+      <h1>REVOLUTION!</h1>
+      <p>Castillo 422, Villa Crespo</p>
+    </div>
+  </div>
   </div>
 
   <div id="beer" class="container">
-
     <h1><span>CERVEZAS ON TAP</span></h1>
 
-    <div>
+    <!-- Example of html added by Javascript
     <div class="beer-container blonde">
       <h2>ORTUZAR</h2>
       <h3>Blonde Ale</h3>
@@ -216,111 +223,28 @@
           <p><span>IBU:</span> 18</p>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="beer-container blonde">
-      <h2>GUTENBIER</h2>
-      <h3>Kolsch</h3>
-      <div class="info">
-        <div class="info-inline">
-          <p><span>ABV:</span> 4.9<span>%</span></p>
-        </div>
-        <div class="info-inline">
-          <p><span>IBU:</span> 20</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="beer-container red">
-      <h2>ORTUZAR</h2>
-      <h3>Scottish</h3>
-      <div class="info">
-        <div class="info-inline">
-          <p><span>ABV:</span> 6.0<span>%</span></p>
-        </div>
-        <div class="info-inline">
-          <p><span>IBU:</span> 20</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="beer-container blonde">
-      <h2>HOPS</h2>
-      <h3>Pale Ale</h3>
-      <div class="info">
-        <div class="info-inline">
-          <p><span>ABV:</span> 5.6<span>%</span></p>
-        </div>
-        <div class="info-inline">
-          <p><span>IBU:</span> 39</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="beer-container red">
-      <h2>HOPS</h2>
-      <h3>Red Bitter</h3>
-      <div class="info">
-        <div class="info-inline">
-          <p><span>ABV:</span> 6.0<span>%</span></p>
-        </div>
-        <div class="info-inline">
-          <p><span>IBU:</span> 34</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="beer-container dark">
-      <h2>ORTUZAR</h2>
-      <h3>Porter</h3>
-      <div class="info">
-        <div class="info-inline">
-          <p><span>ABV:</span> 6.0<span>%</span></p>
-        </div>
-        <div class="info-inline">
-          <p><span>IBU:</span> 25</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="beer-container dark">
-      <h2>PORTLANDER</h2>
-      <h3>American Brown Ale</h3>
-      <p>En Estados Unidos un grupo de cerveceros artesanales partieron de una Porter agregando lúpulos típicos de una American India Pale Ale. En Hops partimos de una Red Ale para lograr una cerveza intensa con el amargor de una IPA.</p>
-      <div class="info">
-        <div class="info-inline">
-          <p><span>ABV:</span> 5.0<span>%</span></p>
-        </div>
-        <div class="info-inline">
-          <p><span>IBU:</span> 30</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="beer-container blonde">
-      <h2>KINGSTON</h2>
-      <h3>India Pale Ale</h3>
-      <p>En Estados Unidos un grupo de cerveceros artesanales partieron de una Porter agregando lúpulos típicos de una American India Pale Ale. En Hops partimos de una Red Ale para lograr una cerveza intensa con el amargor de una IPA.</p>
-      <div class="info">
-        <div class="info-inline">
-          <p><span>ABV:</span> 6.0<span>%</span></p>
-        </div>
-        <div class="info-inline">
-          <p><span>IBU:</span> 45</p>
-        </div>
-      </div>
-    </div>
-
-    </div>
   </div>
-
-  <div id="yellow"></div>
 
   <div id="instafeed">
-    <h1><span>SOCIAL</span></h1>
   </div>
 
-  <div id="contact"></div>
+  <div id="about">
+  <div class="container">
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="imgView" x="0px" y="0px" viewBox="0 0 95.333 95.333"
+    style="enable-background:new 0 0 95.333 95.333;" xml:space="preserve" width="50px" height="50px" >
+    	<path d="M93.333,0H2C0.896,0,0,0.896,0,2v91.332c0,1.104,0.896,2,2,2h48.525V63.477H40.284c-0.885,0-1.602-0.717-1.602-1.602   V48.961c0-0.885,0.717-1.603,1.602-1.603h10.242v-8.913c0-11.744,7.395-19.332,18.839-19.332l10.188,0.016   c0.883,0.001,1.6,0.718,1.6,1.602v11.991c0,0.885-0.717,1.602-1.602,1.602l-6.863,0.003c-4.729,0-5.595,1.844-5.595,5.475v7.556   h11.979c0.425,0,0.832,0.169,1.133,0.47c0.3,0.301,0.469,0.708,0.469,1.133L80.67,61.876c0,0.885-0.717,1.603-1.602,1.603H67.092   v31.854h26.24c1.104,0,2-0.896,2-2V2C95.333,0.895,94.438,0,93.333,0z"></path>
+    </svg>
+
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="imgView" x="0px" y="0px" viewBox="0 0 242.667 242.667"
+    style="enable-background:new 0 0 242.667 242.667;" xml:space="preserve" width="50px" height="50px">
+      <path d="M168.496,111.025h15.219v65.454c0,3.996-3.24,7.236-7.236,7.236H66.188c-3.996,0-7.236-3.24-7.236-7.236v-65.454h15.219  c-0.723,3.323-1.115,6.769-1.115,10.308c0,26.663,21.614,48.277,48.277,48.277c26.663,0,48.277-21.614,48.277-48.277  C169.61,117.794,169.219,114.347,168.496,111.025z M121.333,153.852c17.959,0,32.518-14.559,32.518-32.518  c0-17.959-14.559-32.518-32.518-32.518c-17.959,0-32.518,14.559-32.518,32.518C88.815,139.293,103.374,153.852,121.333,153.852z   M160.293,87.937h12.385c3.631,0,6.575-2.944,6.575-6.575V68.978c0-3.631-2.943-6.574-6.575-6.574h-12.385  c-3.631,0-6.574,2.943-6.574,6.574v12.385C153.719,84.994,156.662,87.937,160.293,87.937z M242.667,0v242.667H0V0H242.667z   M198.623,63.539c0-10.766-8.728-19.494-19.494-19.494H63.539c-10.766,0-19.494,8.728-19.494,19.494v115.59  c0,10.766,8.728,19.494,19.494,19.494h115.59c10.766,0,19.494-8.728,19.494-19.494V63.539z"></path>
+    </svg>
+
+  </div>
+  </div>
 
   <div id="end"></div>
 
