@@ -491,13 +491,16 @@ window.addEventListener('scroll', function(){
 });
 
 // JSON Beers
-// Uses a var form ontap.js to loop and create the html
+// Uses Google Sheets
 
-(function() {
+function importJSON(json) {
+    console.log(json.feed.entry[0].gsx$marca.$t);
 
-  for (v = 0; v < ontap.length; v++) {
-    document.getElementById('beer').innerHTML += '<div class="beer-container ' + ontap[v].color + '"><h2>' + ontap[v].marca +
-    '</h2><h3>' + ontap[v].estilo + '</h3><div class="info"><div class="info-inline"><p><span>ABV:</span> ' + ontap[v].abv +
-    '<span>%</span></p></div><div class="info-inline"><p><span>IBU:</span> ' + ontap[v].ibu + '</p></div></div></div>';
-  }
-})()
+    (function() {for (v = 0; v < json.feed.entry.length; v++) {
+      var gSheet = json.feed.entry[v]
+      document.getElementById('beer').innerHTML += '<div class="beer-container ' + gSheet.gsx$color.$t + '"><h2>' + gSheet.gsx$marca.$t +
+      '</h2><h3>' + gSheet.gsx$estilo.$t + '</h3><div class="info"><div class="info-inline"><p><span>ABV:</span> ' + gSheet.gsx$abv.$t +
+      '<span>%</span></p></div><div class="info-inline"><p><span>IBU:</span> ' + gSheet.gsx$ibu.$t + '</p></div></div></div>';
+    }
+  })()
+}
