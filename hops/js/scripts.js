@@ -340,11 +340,15 @@ function resizeIMG() {
 
     if (screenW < 800) {
       dataElem[e].style.backgroundImage = path + fileName + "_@low" + ext;
+      instaMobile = 4;
      } else {
       dataElem[e].style.backgroundImage = path + fileName + ext;
+      instaMobile = 8;
     }
   }
 }
+
+var instaMobile;
 
 resizeIMG();
 
@@ -354,7 +358,7 @@ var feed = new Instafeed({
         //sortBy: 'most-recent',
         get: 'tagged',
         tagName: 'craftbeer',
-        limit: 4,
+        limit: instaMobile,
         resolution: 'standard_resolution',
         template: '<a href="{{link}}"><img src="{{image}}"/></a>'
     });
@@ -494,8 +498,6 @@ window.addEventListener('scroll', function(){
 // Uses Google Sheets
 
 function importJSON(json) {
-    console.log(json.feed.entry[0].gsx$marca.$t);
-
     (function() {for (v = 0; v < json.feed.entry.length; v++) {
       var gSheet = json.feed.entry[v]
       document.getElementById('beer').innerHTML += '<div class="beer-container ' + gSheet.gsx$color.$t + '"><h2>' + gSheet.gsx$marca.$t +

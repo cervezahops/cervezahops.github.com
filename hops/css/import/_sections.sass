@@ -5,18 +5,24 @@ img
   width: 100%
   height: 100vh
   background:
-    color: $b
+    color: $b-bg
     position: center center
     repeat: no-repeat
     size: cover
   padding-top: 1px
   text-align: center
   color: $w
-  border-bottom: 5px solid $y
 
   h1
     color: $w
     padding: 50vh 0 0 0
+
+  //.intro-photo
+    padding-top: 40vh
+
+    //img
+      height: auto
+      width: 40%
 
   //.overlay
     width: 100%
@@ -26,32 +32,6 @@ img
 // Info
 
 #intro
-  background: #fafafa
-  padding: 150px 0
-  text-align: center
-  border-bottom: 1px solid #f2f2f2
-
-  .intro-photo
-    img
-      width: 92%
-
-  .intro-text
-
-@media (min-width: 40.0625em)
-  #intro
-    .intro-photo
-      img
-        width: 80%
-
-@media (min-width: 64.0625em)
-  #intro
-    .intro-photo
-      float: left
-      width: 50%
-
-    .intro-text
-      float: left
-      width: 50%
 
 // Beers
 
@@ -65,7 +45,7 @@ img
     border-top: 1px solid $color
     border-bottom: 1px solid $color
 
-#beer-bg
+.beer-bg
   background: $w
 
 #beer
@@ -155,10 +135,11 @@ img
 
 @media (min-width: 64.0625em)
   #beer
-    padding: 120px 0
+    padding: 240px 0
+    padding-top: 160px
 
     .beer-container
-      margin: 0.5%
+      margin: 0.8%
 
     .column
       &:nth-child(odd), &:nth-child(even)
@@ -180,7 +161,6 @@ img
 #instafeed
   text-align: center
   background: $w
-  margin-bottom: 120px
 
   h1
     color: $b
@@ -196,14 +176,8 @@ img
 // About
 
 #end
-  position: fixed
-  bottom: 0
-  left: 0
-  right: 0
-  z-index: -5
-  height: 80px
-  padding: 20px 0
-  background: $b
+  height: 360px
+  background: $b-bg
   text-align: center
 
   svg
@@ -217,7 +191,3 @@ img
 
     path
       fill: #999
-
-#end2
-  background: $y
-  height: 15px

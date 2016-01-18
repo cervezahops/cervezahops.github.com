@@ -410,7 +410,7 @@ p {
 h1 {
   margin-bottom: 50px;
   font-size: 26px;
-  color: #444;
+  color: #494F5C;
 }
 
 h1 span {
@@ -425,7 +425,7 @@ h1 span {
   left: 0;
   bottom: 0;
   width: 100vw;
-  background-color: #111;
+  background-color: #191B1F;
   -webkit-transform: translate(200vw, 0);
       -ms-transform: translate(200vw, 0);
           transform: translate(200vw, 0);
@@ -479,7 +479,7 @@ h1 span {
   left: 0;
   right: 0;
   height: 54px;
-  background: #111;
+  background: #191B1F;
 }
 
 .nav-large {
@@ -627,14 +627,13 @@ img {
 #hero {
   width: 100%;
   height: 100vh;
-  background-color: #111;
+  background-color: #191B1F;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 1px;
   text-align: center;
   color: #f6f6f6;
-  border-bottom: 5px solid #edc356;
 }
 
 #hero h1 {
@@ -642,35 +641,7 @@ img {
   padding: 50vh 0 0 0;
 }
 
-#intro {
-  background: #fafafa;
-  padding: 150px 0;
-  text-align: center;
-  border-bottom: 1px solid #f2f2f2;
-}
-
-#intro .intro-photo img {
-  width: 92%;
-}
-
-@media (min-width: 40.0625em) {
-  #intro .intro-photo img {
-    width: 80%;
-  }
-}
-
-@media (min-width: 64.0625em) {
-  #intro .intro-photo {
-    float: left;
-    width: 50%;
-  }
-  #intro .intro-text {
-    float: left;
-    width: 50%;
-  }
-}
-
-#beer-bg {
+.beer-bg {
   background: #f6f6f6;
 }
 
@@ -680,7 +651,7 @@ img {
 }
 
 #beer h1, #beer h2 {
-  color: #111;
+  color: #494F5C;
 }
 
 #beer h2, #beer h3 {
@@ -809,10 +780,11 @@ img {
 
 @media (min-width: 64.0625em) {
   #beer {
-    padding: 120px 0;
+    padding: 240px 0;
+    padding-top: 160px;
   }
   #beer .beer-container {
-    margin: 0.5%;
+    margin: 0.8%;
   }
   #beer .column:nth-child(odd) .beer-container, #beer .column:nth-child(even) .beer-container {
     float: none;
@@ -831,11 +803,10 @@ img {
 #instafeed {
   text-align: center;
   background: #f6f6f6;
-  margin-bottom: 120px;
 }
 
 #instafeed h1 {
-  color: #111;
+  color: #494F5C;
 }
 
 #instafeed img {
@@ -849,14 +820,8 @@ img {
 }
 
 #end {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -5;
-  height: 80px;
-  padding: 20px 0;
-  background: #111;
+  height: 360px;
+  background: #191B1F;
   text-align: center;
 }
 
@@ -872,9 +837,4 @@ img {
 
 #end svg path {
   fill: #999;
-}
-
-#end2 {
-  background: #edc356;
-  height: 15px;
 }
