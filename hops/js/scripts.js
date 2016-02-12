@@ -415,7 +415,7 @@ var aMobile = classA('aside-menu')[0].getElementsByTagName("a"),
 for (var an = 0; an < aMobile.length; an++) {
   laPutaMadre(an, aMobile, 'mobile');
 }
-for (var ac = 0; ac < aDesktop.length - 1; ac++) {
+for (var ac = 0; ac < aDesktop.length; ac++) {
   laPutaMadre(ac, aDesktop);
 }
 
@@ -453,12 +453,12 @@ window.addEventListener('scroll', function(){
 // Navbar links active state - only for desktop
 
   if (screenW > 1000) {
-    for (var n = 0; n < aDesktop.length - 1; n++) {
+    for (var n = 0; n < aDesktop.length; n++) {
       var idValue = aDesktop[n].getAttribute('href'),
           checkID = idValue.substring(1, idValue.length),
           checkEnd = 'end';
 
-      if (n !== aDesktop.length - 2) {
+      if (n !== aDesktop.length - 1) {
         var idValueEnd = aDesktop[n + 1].getAttribute('href'),
             checkEnd = idValueEnd.substring(1, idValueEnd.length);
       }
