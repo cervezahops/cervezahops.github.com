@@ -499,10 +499,13 @@ window.addEventListener('scroll', function(){
 
 function importJSON(json) {
     (function() {for (v = 0; v < json.feed.entry.length; v++) {
-      var gSheet = json.feed.entry[v]
+      var gSheet = json.feed.entry[v];
+      var beerNumber = v + 1;
       document.getElementById('beer').innerHTML += '<div class="beer-container ' + gSheet.gsx$color.$t + '"><h2>' + gSheet.gsx$marca.$t +
-      '</h2><h3>' + gSheet.gsx$estilo.$t + '</h3><div class="info"><div class="info-inline"><p><span>ABV:</span> ' + gSheet.gsx$abv.$t +
-      '<span>%</span></p></div><div class="info-inline"><p><span>IBU:</span> ' + gSheet.gsx$ibu.$t + '</p></div></div></div>';
+      '</h2><h3>' + gSheet.gsx$estilo.$t + '</h3><div class="beer-num"><h2>'+ beerNumber +'</h2></div>' +
+      //'<div class="info"><div class="info-inline"><p><span>ABV:</span> ' + gSheet.gsx$abv.$t +
+      //'<span>%</span></p></div><div class="info-inline"><p><span>IBU:</span> ' + gSheet.gsx$ibu.$t + '</p></div></div>' +
+      '</div>';
     }
   })()
 }

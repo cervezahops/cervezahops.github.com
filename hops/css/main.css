@@ -651,13 +651,14 @@ img {
   text-align: center;
 }
 
-#beer h1, #beer h2, #beer h4 {
+#beer h1, #beer h2 {
   color: #494F5C;
 }
 
 #beer h2, #beer h3 {
   margin: 0;
   text-transform: uppercase;
+  position: relative;
 }
 
 #beer h2, #beer h4 {
@@ -686,6 +687,28 @@ img {
   color: #f6f6f6;
 }
 
+#beer .beer-num {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  top: 6px;
+  left: 128px;
+  border-radius: 7px;
+  background: #e9e9e9;
+  -webkit-transform: scale(2);
+      -ms-transform: scale(2);
+          transform: scale(2);
+  -webkit-transition: all 0.4s ease-in-out;
+          transition: all 0.4s ease-in-out;
+}
+
+#beer .beer-num h2 {
+  color: #f6f6f6;
+  z-index: 2;
+  font-size: 28px;
+  top: 2px;
+}
+
 #beer .red .info p {
   color: #cd4949;
 }
@@ -694,6 +717,10 @@ img {
   color: #cd4949;
   border-top: 1px solid #cd4949;
   border-bottom: 1px solid #cd4949;
+}
+
+#beer .red .beer-num {
+  background: #cd4949;
 }
 
 #beer .blonde .info p {
@@ -706,6 +733,10 @@ img {
   border-bottom: 1px solid #edc356;
 }
 
+#beer .blonde .beer-num {
+  background: #edc356;
+}
+
 #beer .dark .info p {
   color: #878373;
 }
@@ -714,6 +745,10 @@ img {
   color: #878373;
   border-top: 1px solid #878373;
   border-bottom: 1px solid #878373;
+}
+
+#beer .dark .beer-num {
+  background: #878373;
 }
 
 #beer .beer-container {
@@ -727,11 +762,6 @@ img {
   -webkit-transition: all 0.3s ease-in-out;
           transition: all 0.3s ease-in-out;
   padding: 2%;
-}
-
-#beer .beer-container p {
-  text-align: justify;
-  height: 140px;
 }
 
 #beer .beer-container .info {
@@ -770,6 +800,12 @@ img {
           transform: translate(0, 0);
 }
 
+#beer .show .beer-num {
+  -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+          transform: scale(1);
+}
+
 @media (min-width: 40.0625em) {
   #beer .column:nth-child(odd) .beer-container {
     float: right;
@@ -803,10 +839,6 @@ img {
 #instafeed {
   text-align: center;
   background: #f6f6f6;
-}
-
-#instafeed h1 {
-  color: #494F5C;
 }
 
 #instafeed img {
