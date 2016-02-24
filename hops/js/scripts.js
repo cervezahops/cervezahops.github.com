@@ -384,7 +384,7 @@ function resizeIMG() {
 
     if (screenW < 800) {
       dataElem[e].style.backgroundImage = path + fileName + "_@low" + ext;
-      instaMobile = 4;
+      instaMobile = 6;
      } else {
       dataElem[e].style.backgroundImage = path + fileName + ext;
       instaMobile = 8;

@@ -3,7 +3,7 @@ img
 
 #hero
   width: 100%
-  height: 100vh
+  height: 450px
   background:
     color: $b-bg
     position: center center
@@ -12,14 +12,48 @@ img
   padding-top: 1px
   text-align: center
   color: $w
+  position: relative
+  overflow: hidden
 
   h1
+    font-size: 60px
+    transform: rotate(-4deg)
+    padding: 10px 20px
+    margin: 0
+    background: $r
     color: $w
-    padding: 50vh 0 0 0
 
-// Info
+  h2
+    color: $w
+    font-size: 34px
+    margin: 20px 0
 
-#intro
+.vertically-center
+  position: absolute
+  margin: auto
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+  width: 80%
+
+@media (min-width: 40.0625em)
+  #hero
+    height: 800px
+
+@media (min-width: 64.0625em)
+  #hero
+    height: 800px
+
+    h1
+      font-size: 90px
+      padding: 20px 40px
+
+    h2
+      font-size: 50px
+
+  .vertically-center
+    max-width: 800px
+
 
 // Beers
 
@@ -175,6 +209,7 @@ img
 
 @media (min-width: 64.0625em)
   #instafeed
+
     img
       width: 25%
 
