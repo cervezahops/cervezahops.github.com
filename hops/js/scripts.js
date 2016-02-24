@@ -1,10 +1,9 @@
 // INSTAFEED
 
 (function() {
-  var Instafeed, root;
+  var Instafeed;
 
   Instafeed = (function() {
-
     function Instafeed(params, context) {
       var option, value;
       this.options = {
@@ -66,7 +65,7 @@
     };
 
     Instafeed.prototype.parse = function(response) {
-      var anchor, fragment, header, htmlString, image, imageString, imageUrl, images, img, imgUrl, instanceName, node, reverse, sortSettings, tmpEl, _i, _j, _k, _len, _len1, _len2, _ref;
+      var anchor, childNodeCount, childNodeIndex, childNodesArr, e, eMsg, fragment, header, htmlString, httpProtocol, i, image, imageObj, imageString, imageUrl, images, img, imgHeight, imgOrient, imgUrl, imgWidth, instanceName, j, k, len, len1, len2, node, parsedLimit, reverse, sortSettings, targetEl, tmpEl;
       if (typeof response !== 'object') {
         if ((this.options.error != null) && typeof this.options.error === 'function') {
           this.options.error.call(this, 'Invalid JSON data');
@@ -126,10 +125,9 @@
       }
       if ((typeof document !== "undefined" && document !== null) && this.options.mock === false) {
         images = response.data;
-        if (this.options.limit != null) {
-          if (images.length > this.options.limit) {
-            images = images.slice(0, this.options.limit + 1 || 9e9);
-          }
+        parsedLimit = parseInt(this.options.limit, 10);
+        if ((this.options.limit != null) && images.length > parsedLimit) {
+          images = images.slice(0, parsedLimit);
         }
         fragment = document.createDocumentFragment();
         if ((this.options.filter != null) && typeof this.options.filter === 'function') {
@@ -140,17 +138,36 @@
           imageString = '';
           imgUrl = '';
           tmpEl = document.createElement('div');
-          for (_i = 0, _len = images.length; _i < _len; _i++) {
-            image = images[_i];
-            imageUrl = image.images[this.options.resolution].url;
-            if (!this.options.useHttp) {
-              imageUrl = imageUrl.replace('http://', '//');
+          for (i = 0, len = images.length; i < len; i++) {
+            image = images[i];
+            imageObj = image.images[this.options.resolution];
+            if (typeof imageObj !== 'object') {
+              eMsg = "No image found for resolution: " + this.options.resolution + ".";
+              throw new Error(eMsg);
+            }
+            imgWidth = imageObj.width;
+            imgHeight = imageObj.height;
+            imgOrient = "square";
+            if (imgWidth > imgHeight) {
+              imgOrient = "landscape";
+            }
+            if (imgWidth < imgHeight) {
+              imgOrient = "portrait";
+            }
+            imageUrl = imageObj.url;
+            httpProtocol = window.location.protocol.indexOf("http") >= 0;
+            if (httpProtocol && !this.options.useHttp) {
+              imageUrl = imageUrl.replace(/https?:\/\//, '//');
             }
             imageString = this._makeTemplate(this.options.template, {
               model: image,
               id: image.id,
               link: image.link,
+              type: image.type,
               image: imageUrl,
+              width: imgWidth,
+              height: imgHeight,
+              orientation: imgOrient,
               caption: this._getObjectProperty(image, 'caption.text'),
               likes: image.likes.count,
               comments: image.comments.count,
@@ -159,18 +176,30 @@
             htmlString += imageString;
           }
           tmpEl.innerHTML = htmlString;
-          _ref = [].slice.call(tmpEl.childNodes);
-          for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
-            node = _ref[_j];
+          childNodesArr = [];
+          childNodeIndex = 0;
+          childNodeCount = tmpEl.childNodes.length;
+          while (childNodeIndex < childNodeCount) {
+            childNodesArr.push(tmpEl.childNodes[childNodeIndex]);
+            childNodeIndex += 1;
+          }
+          for (j = 0, len1 = childNodesArr.length; j < len1; j++) {
+            node = childNodesArr[j];
             fragment.appendChild(node);
           }
         } else {
-          for (_k = 0, _len2 = images.length; _k < _len2; _k++) {
-            image = images[_k];
+          for (k = 0, len2 = images.length; k < len2; k++) {
+            image = images[k];
             img = document.createElement('img');
-            imageUrl = image.images[this.options.resolution].url;
-            if (!this.options.useHttp) {
-              imageUrl = imageUrl.replace('http://', '//');
+            imageObj = image.images[this.options.resolution];
+            if (typeof imageObj !== 'object') {
+              eMsg = "No image found for resolution: " + this.options.resolution + ".";
+              throw new Error(eMsg);
+            }
+            imageUrl = imageObj.url;
+            httpProtocol = window.location.protocol.indexOf("http") >= 0;
+            if (httpProtocol && !this.options.useHttp) {
+              imageUrl = imageUrl.replace(/https?:\/\//, '//');
             }
             img.src = imageUrl;
             if (this.options.links === true) {
@@ -183,15 +212,23 @@
             }
           }
         }
-        document.getElementById(this.options.target).appendChild(fragment);
+        targetEl = this.options.target;
+        if (typeof targetEl === 'string') {
+          targetEl = document.getElementById(targetEl);
+        }
+        if (targetEl == null) {
+          eMsg = "No element with id=\"" + this.options.target + "\" on page.";
+          throw new Error(eMsg);
+        }
+        targetEl.appendChild(fragment);
         header = document.getElementsByTagName('head')[0];
         header.removeChild(document.getElementById('instafeed-fetcher'));
         instanceName = "instafeedCache" + this.unique;
         window[instanceName] = void 0;
         try {
           delete window[instanceName];
-        } catch (e) {
-
+        } catch (_error) {
+          e = _error;
         }
       }
       if ((this.options.after != null) && typeof this.options.after === 'function') {
@@ -208,30 +245,27 @@
           endpoint = "media/popular";
           break;
         case "tagged":
-          if (typeof this.options.tagName !== 'string') {
+          if (!this.options.tagName) {
             throw new Error("No tag name specified. Use the 'tagName' option.");
           }
           endpoint = "tags/" + this.options.tagName + "/media/recent";
           break;
         case "location":
-          if (typeof this.options.locationId !== 'number') {
+          if (!this.options.locationId) {
             throw new Error("No location specified. Use the 'locationId' option.");
           }
           endpoint = "locations/" + this.options.locationId + "/media/recent";
           break;
         case "user":
-          if (typeof this.options.userId !== 'number') {
+          if (!this.options.userId) {
             throw new Error("No user specified. Use the 'userId' option.");
-          }
-          if (typeof this.options.accessToken !== 'string') {
-            throw new Error("No access token. Use the 'accessToken' option.");
           }
           endpoint = "users/" + this.options.userId + "/media/recent";
           break;
         default:
           throw new Error("Invalid option for get: '" + this.options.get + "'.");
       }
-      final = "" + base + "/" + endpoint;
+      final = base + "/" + endpoint;
       if (this.options.accessToken != null) {
         final += "?access_token=" + this.options.accessToken;
       } else {
@@ -253,13 +287,15 @@
     };
 
     Instafeed.prototype._makeTemplate = function(template, data) {
-      var output, pattern, varName, varValue, _ref;
+      var output, pattern, ref, varName, varValue;
       pattern = /(?:\{{2})([\w\[\]\.]+)(?:\}{2})/;
       output = template;
       while (pattern.test(output)) {
         varName = output.match(pattern)[1];
-        varValue = (_ref = this._getObjectProperty(data, varName)) != null ? _ref : '';
-        output = output.replace(pattern, "" + varValue);
+        varValue = (ref = this._getObjectProperty(data, varName)) != null ? ref : '';
+        output = output.replace(pattern, function() {
+          return "" + varValue;
+        });
       }
       return output;
     };
@@ -303,16 +339,16 @@
     };
 
     Instafeed.prototype._filter = function(images, filter) {
-      var filteredImages, image, _fn, _i, _len;
+      var filteredImages, fn, i, image, len;
       filteredImages = [];
-      _fn = function(image) {
+      fn = function(image) {
         if (filter(image)) {
           return filteredImages.push(image);
         }
       };
-      for (_i = 0, _len = images.length; _i < _len; _i++) {
-        image = images[_i];
-        _fn(image);
+      for (i = 0, len = images.length; i < len; i++) {
+        image = images[i];
+        fn(image);
       }
       return filteredImages;
     };
@@ -321,9 +357,17 @@
 
   })();
 
-  root = typeof exports !== "undefined" && exports !== null ? exports : window;
-
-  root.Instafeed = Instafeed;
+  (function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+      return define([], factory);
+    } else if (typeof module === 'object' && module.exports) {
+      return module.exports = factory();
+    } else {
+      return root.Instafeed = factory();
+    }
+  })(this, function() {
+    return Instafeed;
+  });
 
 }).call(this);
 
@@ -352,12 +396,29 @@ var instaMobile;
 
 resizeIMG();
 
+// JSON Beers
+// Uses Google Sheets
+
+function importJSON(json) {
+    (function() {for (v = 0; v < json.feed.entry.length; v++) {
+      var gSheet = json.feed.entry[v];
+      var beerNumber = v + 1;
+      document.getElementById('beer').innerHTML += '<div class="beer-container ' + gSheet.gsx$color.$t + '"><h2>' + gSheet.gsx$marca.$t +
+      '</h2><h3>' + gSheet.gsx$estilo.$t + '</h3><div class="beer-num"><h2>'+ beerNumber +'</h2></div>' +
+      //'<div class="info"><div class="info-inline"><p><span>ABV:</span> ' + gSheet.gsx$abv.$t +
+      //'<span>%</span></p></div><div class="info-inline"><p><span>IBU:</span> ' + gSheet.gsx$ibu.$t + '</p></div></div>' +
+      '</div>';
+    }
+  })()
+}
+
+// Instagram
+
 var feed = new Instafeed({
-        //get: 'user',
         clientId: 'a09f68c9ae8c4c5bba18c283b8df669f',
-        //sortBy: 'most-recent',
-        get: 'tagged',
-        tagName: 'craftbeer',
+        sortBy: 'most-recent',
+        get: 'user',
+        userId: 2018759811,
         limit: instaMobile,
         resolution: 'standard_resolution',
         template: '<a href="{{link}}"><img src="{{image}}"/></a>'
@@ -444,6 +505,17 @@ var check = true,
     }, i * 120);
   }
 
+  //
+
+  function isScrolledIntoView(el) {
+      var id = document.getElementById(el)
+      var elemTop = id.getBoundingClientRect().top;
+      var elemBottom = id.getBoundingClientRect().bottom;
+
+      var isVisible = (elemTop > 0) && (elemBottom < window.innerHeight);
+      return isVisible;
+  }
+
 window.addEventListener('scroll', function(){
 
   var wScroll = this.pageYOffset,
@@ -483,29 +555,14 @@ window.addEventListener('scroll', function(){
     }
   }
 
+
 // Parallax animations
 
-	if (wScroll > idTop('beer') - (navHeight + 15) && check) {
+	if (wScroll > idTop('beer') - navHeight && check) {
     for (var h = 0; h < classA('beer-container').length; h++) {
       doTime(h, 'beer-container');
     }
     check = false;
-  }
+  };
 
 });
-
-// JSON Beers
-// Uses Google Sheets
-
-function importJSON(json) {
-    (function() {for (v = 0; v < json.feed.entry.length; v++) {
-      var gSheet = json.feed.entry[v];
-      var beerNumber = v + 1;
-      document.getElementById('beer').innerHTML += '<div class="beer-container ' + gSheet.gsx$color.$t + '"><h2>' + gSheet.gsx$marca.$t +
-      '</h2><h3>' + gSheet.gsx$estilo.$t + '</h3><div class="beer-num"><h2>'+ beerNumber +'</h2></div>' +
-      //'<div class="info"><div class="info-inline"><p><span>ABV:</span> ' + gSheet.gsx$abv.$t +
-      //'<span>%</span></p></div><div class="info-inline"><p><span>IBU:</span> ' + gSheet.gsx$ibu.$t + '</p></div></div>' +
-      '</div>';
-    }
-  })()
-}
