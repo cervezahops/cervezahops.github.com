@@ -14,19 +14,33 @@ img
   color: $w
   position: relative
   overflow: hidden
+  margin-top: 54px
 
   h1
     font-size: 60px
-    transform: rotate(-4deg)
+    transform: rotate(-3deg)
     padding: 10px 20px
     margin: 0
-    background: $r
-    color: $w
+    background: $w
+    color: $b-bg
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.6)
 
   h2
     color: $w
     font-size: 34px
-    margin: 20px 0
+    margin: 24px 0
+    display: inline-block
+    vertical-align: middle
+    text-shadow: 0px 0px 30px rgba(0,0,0,0.8)
+
+  svg
+    margin: 0 8px
+    width: 26px
+    height: 26px
+    vertical-align: middle
+
+    polygon
+      fill: $r
 
 .vertically-center
   position: absolute
@@ -34,15 +48,11 @@ img
   top: 50%
   left: 50%
   transform: translate(-50%,-50%)
-  width: 80%
+  width: 88%
 
 @media (min-width: 40.0625em)
   #hero
-    height: 800px
-
-@media (min-width: 64.0625em)
-  #hero
-    height: 800px
+    height: 600px
 
     h1
       font-size: 90px
@@ -50,6 +60,16 @@ img
 
     h2
       font-size: 50px
+
+@media (min-width: 64.0625em)
+  #hero
+    height: 800px
+    margin-top: 0
+
+    svg
+      margin: 0 12px
+      width: 36px
+      height: 36px
 
   .vertically-center
     max-width: 800px
@@ -272,7 +292,6 @@ img
     padding: 0 3%
 
   .map-info, .pub-info
-    //max-width: none
     width: 48%
     display: inline-block
     vertical-align: middle
