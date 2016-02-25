@@ -1,3 +1,8 @@
+// temporary fix for not showing beer names when refreshing in that part of the page
+// this will go to the top of the page when you hit the refresh button
+
+window.onbeforeunload = function(){ window.scrollTo(0,0); };
+
 // INSTAFEED
 
 (function() {
@@ -451,10 +456,16 @@ function smoothScroll(target) {
     scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
 }
 
+// Menu Toggle for Mobile/Desktop
+
 function mobileMenu() {
   classA('nav-menu')[0].classList.toggle("is-active");
   classA('aside-menu')[0].classList.toggle("show-mobile");
 }
+
+classA('nav-menu')[0].addEventListener('click', mobileMenu);
+
+//
 
 function laPutaMadre(counter, aTag, check) {
   aTag[counter].addEventListener("click", function(event) {
@@ -468,8 +479,6 @@ function laPutaMadre(counter, aTag, check) {
   }, false);
 }
 
-classA('nav-menu')[0].addEventListener('click', mobileMenu);
-
 var aMobile = classA('aside-menu')[0].getElementsByTagName("a"),
     aDesktop = classA('nav-large')[0].getElementsByTagName("a");
 
@@ -480,13 +489,7 @@ for (var ac = 0; ac < aDesktop.length; ac++) {
   laPutaMadre(ac, aDesktop);
 }
 
-// Scroll Animations
-
-var check = true,
-    check2 = true,
-    checkAbout = true,
-    navMenu = document.getElementById('menu'),
-    navHeight = 66;
+// Scroll Functions
 
   function idTop(id) {
     var navID = document.getElementById(id),
@@ -505,8 +508,6 @@ var check = true,
     }, i * 120);
   }
 
-  //
-
   function isScrolledIntoView(el) {
       var id = document.getElementById(el)
       var elemTop = id.getBoundingClientRect().top;
@@ -515,6 +516,13 @@ var check = true,
       var isVisible = (elemTop > 0) && (elemBottom < window.innerHeight);
       return isVisible;
   }
+
+// Scroll
+
+var check = true,
+    check2 = true,
+    navMenu = document.getElementById('menu'),
+    navHeight = 70;
 
 window.addEventListener('scroll', function(){
 
@@ -527,7 +535,7 @@ window.addEventListener('scroll', function(){
   if (screenW > 1000) {
     for (var n = 0; n < aDesktop.length; n++) {
       var idValue = aDesktop[n].getAttribute('href'),
-          checkID = idValue.substring(1, idValue.length),
+          checkID = idValue.substring(1, idValue.length);
           checkEnd = 'end';
 
       if (n !== aDesktop.length - 1) {
@@ -553,7 +561,7 @@ window.addEventListener('scroll', function(){
         check2 = true;
       }
     }
-  }
+  };
 
 
 // Parallax animations
