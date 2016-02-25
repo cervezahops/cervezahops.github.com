@@ -389,15 +389,18 @@ function resizeIMG() {
 
     if (screenW < 800) {
       dataElem[e].style.backgroundImage = path + fileName + "_@low" + ext;
-      instaMobile = 6;
+      instaMobileImg = 6;
+      instaMobileResolution = 'low_resolution';
      } else {
       dataElem[e].style.backgroundImage = path + fileName + ext;
-      instaMobile = 8;
+      instaMobileImg = 8;
+      instaMobileResolution = 'standard_resolution';
     }
   }
 }
 
-var instaMobile;
+var instaMobileImg,
+    instaMobileResolution;
 
 resizeIMG();
 
@@ -424,8 +427,8 @@ var feed = new Instafeed({
         sortBy: 'most-recent',
         get: 'user',
         userId: 2018759811,
-        limit: instaMobile,
-        resolution: 'standard_resolution',
+        limit: instaMobileImg,
+        resolution: instaMobileResolution,
         template: '<a href="{{link}}"><img src="{{image}}"/></a>'
     });
     feed.run();
