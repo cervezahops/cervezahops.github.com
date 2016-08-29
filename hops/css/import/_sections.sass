@@ -1,5 +1,5 @@
 img
-  vertical-align: middle
+  vertical-align: bottom
 
 #hero
   width: 100%
@@ -271,16 +271,18 @@ img
 
     path
       fill: $font
-
-  .map-info
-    width: 500px
-    height: 500px
-    border-radius: 100%
+  .map
+    width: 75%
     margin: 0 auto
-    background-image:  url("../img/mapa.jpg")
-    background-repeat: no-repeat
-    background-position: center center
-    background-size: cover
+
+    .map-info
+      border-radius: 50%
+      width: 100%
+      padding-bottom: 100%
+      background-image:  url("../img/mapa.jpg")
+      background-repeat: no-repeat
+      background-position: center center
+      background-size: cover
 
   .pub-info
     width: 800px
@@ -290,8 +292,13 @@ img
 @media (min-width: 40.0625em)
   #pub
     padding: 5em 0
+    .map
+      width: 60%
 
-//@media (min-width: 64.0625em)
+@media (min-width: 64.0625em)
+  #pub
+    .map
+      width: 36%
 
 // End
 

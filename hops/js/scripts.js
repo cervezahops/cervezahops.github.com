@@ -421,7 +421,7 @@ function importJSON(json) {
 // Instagram
 
 var feed = new Instafeed({
-        clientId: 'a09f68c9ae8c4c5bba18c283b8df669f',
+	accessToken: '2018759811.1677ed0.7c2effe930cf4442a27bd01852571cf8',
         sortBy: 'most-recent',
         get: 'user',
         userId: 2018759811,
